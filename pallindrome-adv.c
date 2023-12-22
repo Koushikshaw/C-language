@@ -22,6 +22,8 @@ bool isPalindrome(int x){
     // {
     //     printf("%c\n",str[i]);
     // }
+
+    //For reversing the string
     int start = 0;
     int end = length - 1;
 
@@ -57,7 +59,7 @@ int main()
 {
     //Write your C code Here
     int x;
-    printf("Chceck if the number is pallindrome or not (signs included)\n");
+    printf("\t\tCheck if the number is palindrome or not (signs included)\n");
     printf("Enter the number You want to check : ");
     scanf("%d",&x);
     int b = isPalindrome(x);
