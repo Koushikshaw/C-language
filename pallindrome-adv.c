@@ -68,6 +68,5 @@ int main()
     else{
         printf("The number you entered is not a pallindrome");
     }
-    
     return 0;
 }
