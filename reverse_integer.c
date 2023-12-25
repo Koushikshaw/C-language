@@ -39,7 +39,7 @@ int reverse(int x){
 
 int main()
 {
-    //Write your C code Here
+    //Taking input from the user
     int a;
     printf("\t\tReversing a Integer\n");
     printf("Enter the integer to reverse: ");
