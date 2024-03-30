@@ -10,7 +10,7 @@ typedef struct {
 
 void addRecipe(Recipe *recipes, int *numRecipes, FILE *file);
 void searchRecipe(Recipe *recipes, int numRecipes);
-// void updateRecipe(Recipe *recipes, int numRecipes, FILE *file);
+void updateRecipe(Recipe *recipes, int numRecipes, FILE *file);
 
 int main() {
     Recipe recipes[100];
@@ -48,7 +48,7 @@ int main() {
                 searchRecipe(recipes, numRecipes);
                 break;
             case 3:
-                // updateRecipe(recipes, numRecipes, file);
+                updateRecipe(recipes, numRecipes, file);
                 break;
             case 4:
                 break;
@@ -78,10 +78,8 @@ void addRecipe(Recipe *recipes, int *numRecipes, FILE *file) {
     getchar();
     gets(recipes[*numRecipes].name);
     printf("Enter ingredients: ");
-    // getchar();
     gets(recipes[*numRecipes].ingredients);
     printf("Enter instructions: ");
-    // getchar();
     gets(recipes[*numRecipes].instructions);
 
     (*numRecipes)++;
@@ -104,4 +102,37 @@ void searchRecipe(Recipe *recipes, int numRecipes) {
             return;
         }
     }
+}
+void updateRecipe(Recipe *recipes, int numRecipes, FILE *file) {
+    char name[50];
+    printf("Enter recipe name to update: ");
+    getchar();
+    gets(name);
+
+    // Find the recipe to update
+    int index = -1;
+    for (int i = 0; i < numRecipes; i++) {
+        if (strcmp(recipes[i].name, name) == 0) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index == -1) {
+        printf("Recipe not found.\n");
+        return;
+    }
+
+    // Update recipe
+    printf("Enter new recipe name: ");
+    // getchar();
+    gets(recipes[index].name);
+    printf("Enter new ingredients: ");
+    gets(recipes[index].ingredients);
+    printf("Enter new instructions: ");
+    gets(recipes[index].instructions);
+
+    // Save updated recipe to file
+    fseek(file, index * sizeof(Recipe), SEEK_SET);
+    fwrite(&recipes[index], sizeof(Recipe), 1, file);
 }
