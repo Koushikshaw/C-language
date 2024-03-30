@@ -98,7 +98,7 @@ void addRecipe(Recipe *recipes, int *numRecipes, FILE *file)
     gets(recipes[*numRecipes].instructions);
 
     (*numRecipes)++;
-    printf("\nRecipie added sucessfully!!");
+    printf("\nRecipie added sucessfully!!\n");
 
     fwrite(&recipes[*numRecipes - 1], sizeof(Recipe), 1, file);
 }
@@ -130,7 +130,7 @@ void searchRecipe(Recipe *recipes, int numRecipes)
     {
         printf("Recipe not found!\n");
     }
-    printf("\nFunction sucessfull!!");
+    printf("\nFunction sucessfull!!\n");
 }
 void updateRecipe(Recipe *recipes, int numRecipes, FILE *file)
 {
@@ -174,16 +174,19 @@ void updateRecipe(Recipe *recipes, int numRecipes, FILE *file)
             printf("Enter new recipe name: ");
             getchar();
             gets(recipes[index].name);
+            printf("Name updated Sucessfully!");
             break;
         case 2:
             printf("Enter new ingredients: ");
             getchar();
             gets(recipes[index].ingredients);
+            printf("Ingredients updated Sucessfully!");
             break;
         case 3:
             printf("Enter new instructions: ");
             getchar();
             gets(recipes[index].instructions);
+            printf("Instructions updated Sucessfully!");
             break;
         case 4:
             break;
