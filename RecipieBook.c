@@ -36,9 +36,10 @@ int main()
     }
 
     int choice = 0;
+        printf("\t\tRECIPIE BOOK\n");
     while (choice != 4)
     {
-        printf("\nRecipe Book\n");
+        printf("\tYOU CAN PERFORM THESE: \n");
         printf("1. Add Recipe\n");
         printf("2. Search Recipe\n");
         printf("3. Update Recipe\n");
@@ -49,15 +50,19 @@ int main()
         switch (choice)
         {
         case 1:
+            printf("You choosed to Add a new recipie!\n");
             addRecipe(recipes, &numRecipes, file);
             break;
         case 2:
+            printf("You choosed to search a recipie from the book!\n");
             searchRecipe(recipes, numRecipes);
             break;
         case 3:
+            printf("You choosed to modify a recipie alredy in the book!\n");
             updateRecipe(recipes, numRecipes, file);
             break;
         case 4:
+            printf("Programm is ending!!");
             break;
         default:
             printf("Invalid choice. Please try again.\n");
