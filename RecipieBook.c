@@ -98,6 +98,7 @@ void addRecipe(Recipe *recipes, int *numRecipes, FILE *file)
     gets(recipes[*numRecipes].instructions);
 
     (*numRecipes)++;
+    printf("\nRecipie added sucessfully!!");
 
     fwrite(&recipes[*numRecipes - 1], sizeof(Recipe), 1, file);
 }
@@ -124,11 +125,12 @@ void searchRecipe(Recipe *recipes, int numRecipes)
             break;
         }
     }
-
+    
     if (!found)
     {
         printf("Recipe not found!\n");
     }
+    printf("\nFunction sucessfull!!");
 }
 void updateRecipe(Recipe *recipes, int numRecipes, FILE *file)
 {
@@ -189,6 +191,7 @@ void updateRecipe(Recipe *recipes, int numRecipes, FILE *file)
             printf("Invalid choice. Please try again.\n");
         }
     }
+    printf("\nRecipie uodated sucessfully!!");
         // Save updated recipe to file
         fseek(file, index * sizeof(Recipe), SEEK_SET);
         fwrite(&recipes[index], sizeof(Recipe), 1, file);
