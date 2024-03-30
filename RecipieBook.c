@@ -93,14 +93,20 @@ void searchRecipe(Recipe *recipes, int numRecipes) {
     getchar();
     gets(name);
 
+    int found = 0;
     for (int i = 0; i < numRecipes; i++) {
         if (strcmp(recipes[i].name, name) == 0) {
+            found = 1;
             printf("Recipe found:\n");
             printf("Name: %s\n", recipes[i].name);
             printf("Ingredients: %s\n", recipes[i].ingredients);
             printf("Instructions: %s\n", recipes[i].instructions);
-            return;
+            break;
         }
+    }
+
+    if (!found) {
+        printf("Recipe not found!\n");
     }
 }
 void updateRecipe(Recipe *recipes, int numRecipes, FILE *file) {
@@ -124,13 +130,38 @@ void updateRecipe(Recipe *recipes, int numRecipes, FILE *file) {
     }
 
     // Update recipe
-    printf("Enter new recipe name: ");
-    // getchar();
-    gets(recipes[index].name);
-    printf("Enter new ingredients: ");
-    gets(recipes[index].ingredients);
-    printf("Enter new instructions: ");
-    gets(recipes[index].instructions);
+    int choice = 0;
+    while (choice != 4) {
+        printf("\nWhat would you like to update?\n");
+        printf("1. Recipe name\n");
+        printf("2. Ingredients\n");
+        printf("3. Instructions\n");
+        printf("4. Finish updating\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter new recipe name: ");
+                getchar();
+                gets(recipes[index].name);
+                break;
+            case 2:
+                printf("Enter new ingredients: ");
+                getchar();
+                gets(recipes[index].ingredients);
+                break;
+            case 3:
+                printf("Enter new instructions: ");
+                getchar();
+                gets(recipes[index].instructions);
+                break;
+            case 4:
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
 
     // Save updated recipe to file
     fseek(file, index * sizeof(Recipe), SEEK_SET);
