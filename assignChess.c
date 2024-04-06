@@ -37,13 +37,9 @@ int main()
             else if (count==0)
             {
                 printf("* ");
-            }
-            
-            
+            }  
         }
-        printf("\n");
-        
+        printf("\n"); 
     }
-    
     return 0;
 }
